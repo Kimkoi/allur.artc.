@@ -40,8 +40,8 @@ function woa_add_hero_image() {
  
 	<div id="hero-cont"> 	 
 	
-	<div id="herohead1">Handy things for the house and on the go</div>
-	<div id="herohead2">We offer FREE shipping for all our products!</div>
+	<div id="herohead1">Making your leisure time better</div>
+	<div id="herohead2">One exciting item at a time</div>
 	<br>
 	<div id="herolink" ><a href="http://localhost/Woocommerce/shop" style="color:#2b2b2b;" >Shop now</a></div>
 	
