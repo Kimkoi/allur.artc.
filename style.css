@@ -24,15 +24,6 @@ Images License: GNU General Public License v2 or later
  */
 
 
-#hero-image{
-position: absolute;
-top:160;
-min-width:100%;
-perspective:1000;
-left:0;
-width:auto;
-z-index:-100;		
-}
 
 #hero-cont{
 height: 500px;
@@ -78,7 +69,63 @@ transition-duration: 0.4s;
 #footerlinks{	
 	width: 800px;
 }
+#homebadges{
+max-width: 509px;	
+max-height:158px; 		
+}
 
+#trustbadges{
+max-width: 200px;	
+max-height:62px;
+margin-left: auto;
+margin-right: auto; 		
+}
+
+
+.trustpadges_cart{
+max-height:350px;	
+width:100%;	
+}
+
+.cardpics{
+position: relative;
+max-width: 300px;	
+max-height:93px; 
+margin-left: auto;
+margin-right: auto; 
+	
+}
+/* Submit Button CSS Styles */ 
+.wpcf7 input[type=submit] {
+font-weight:bold; 
+color:#2e3233;
+background-color:transparent;
+font-size: 20px;
+border: 4px solid #2e3233;
+-webkit-transition-duration: 0.4s; /* Safari */
+transition-duration: 0.4s;	
+}
+/* Label Text Styles */ 
+.wpcf7 label { 
+padding: 0 0 10px 0;
+font-size: 20px;
+font-weight:bold;
+}
+
+/* Text Input Field Styles */ 
+.wpcf7 input[type=text], .wpcf7 input[type=email], 
+.wpcf7 .wpcf7-select{
+font-size:25px;
+border: 1px solid black; 
+background-color:#fdf4ec;	
+}
+
+/* Textarea Field Styles */ 
+.wpcf7 textarea {
+font-size:25px;
+border: 1px solid black; 
+background-color:#fdf4ec;	
+}
 
 @media only screen and (max-width :900px) {
 
@@ -132,13 +179,6 @@ transition-duration: 0.4s;
 	#hero-cont{
 	height: 180px;
 	}
-	#footerlinks{
-	padding-bottom:20px;	
-	}
-}
-
-@media only screen and (max-width :500px) {
-
 	#herohead1{
 	font-size: 16px;
 	}
