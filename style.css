@@ -35,8 +35,13 @@ z-index:-100;
 }
 
 #hero-cont{
-height: 660px;
+height: 500px;
 width:auto;	
+background-image: url('http://localhost/Woocommerce/wp-content/uploads/2019/03/homepic.jpg');	
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+background-attachment: fixed;	
 }
 
 #herohead1,#herohead2, #herolink{		
@@ -50,20 +55,22 @@ text-align:center;
 #herohead1{
 padding-top:10%;
 font-size: 50px;
-color:#2b2b2b;	
+color:#2e3233;	
+
 }
 	
 #herohead2{
-font-size: 25px;
-color:#2b2b2b;
+font-size: 30px;
+color:#2e3233;
+
 }
 
 
 #herolink{	
-color:#2b2b2b;
+color:#2e3233;
 font-size: 25px;
 width: 140px;
-border: 4px solid #2b2b2b;
+border: 4px solid #2e3233;
 -webkit-transition-duration: 0.4s; /* Safari */
 transition-duration: 0.4s;	
 }
@@ -75,6 +82,24 @@ transition-duration: 0.4s;
 
 @media only screen and (max-width :900px) {
 
+	#footerlinks{
+	padding-bottom:20px;	
+	}
+	.cardpics{
+	position: relative;
+	max-width: 250px;	
+	max-height:78px; 
+	margin-left: auto;
+	margin-right: auto; 
+}
+		
+}
+
+@media only screen and (max-width :770px) {
+
+	#hero-cont{
+	height: 300px;
+	}
 	#herohead1{
 	font-size: 25px;
 	}
@@ -86,8 +111,26 @@ transition-duration: 0.4s;
 	width: 70px;
 	border: 2px solid #2b2b2b;	
 	}
+	
+	#homebadges{
+	max-width: 350px;	
+	max-height:109px;
+	}
+	
+	.wpcf7 input[type=text], .wpcf7 input[type=email], 
+	.wpcf7 .wpcf7-select{
+	font-size:25px;
+	max-width: 400px;
+	border: 1px solid black; 
+	background-color:#fdf4ec;	
+	}
+
+}
+
+@media only screen and (max-width :620px) {
+
 	#hero-cont{
-	height: 350px;
+	height: 180px;
 	}
 	#footerlinks{
 	padding-bottom:20px;	
@@ -108,30 +151,75 @@ transition-duration: 0.4s;
 	width: 70px;
 	border: 1px solid #2b2b2b;	
 	}
-	#hero-cont{
-	height: 150px;
-	}
+	
 	#footerlinks{
 	padding-bottom:20px;	
 	
+	}	
+	.cardpics{
+	position: relative;
+	max-width: 200px;	
+	max-height:62px; 
+	margin-left: auto;
+	margin-right: auto;	
+	
 	}
 }	
+@media only screen and (max-width :500px) {
+	
+	.wpcf7 input[type=text], .wpcf7 input[type=email], 
+	.wpcf7 .wpcf7-select{
+	font-size:25px;
+	max-width: 230px;
+	border: 1px solid black; 
+	background-color:#fdf4ec;	
+	}
+}
+	
+
+	
 @media only screen and (max-width :400px) {	
 	
 	#footerlinks{
 	padding-bottom:20px;	
 	width: 250px;
 	}
+	
+	#homebadges{
+	max-width: 200px;	
+	max-height:62px;
+	}
+	
+
 }
 
 
 
 #herolink:hover,#small_herolink:hover,#smallest_herolink:hover {
-background: rgba(255, 255, 255, 0.2);
+background: rgba(255, 168, 0, 0.2);
 cursor:pointer;	
 }
 
 #herolink:active,#small_herolink:active,#smallest_herolink:active{
 transform:translateY(4px);	
 }
+
+.wpcf7 input[type=submit]:hover{
+background: rgba(255, 168, 0, 0.2);
+cursor:pointer;	
+}
+
+.wpcf7 input[type=submit]:active{
+transform:translateY(4px);
+}
+
+
+.woocommerce-info, .woocommerce-noreviews, p.no-comments, #coupon_banner {
+     color: #ffffff;   
+	background: #ff7300;
+}
+.wc-stripe-elements-field {
+min-height: 30px;
+}
+
 
