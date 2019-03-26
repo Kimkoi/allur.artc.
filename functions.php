@@ -23,8 +23,6 @@ function sf_child_theme_dequeue_style() {
  * Note: DO NOT! alter or remove the code above this text and only add your custom PHP functions below this text.
  */
 
-
-
 add_action( 'init', 'woa_add_hero_image_init' );
 function woa_add_hero_image_init () {
    add_action( 'storefront_before_content', 'woa_add_hero_image', 5 );
@@ -32,13 +30,9 @@ function woa_add_hero_image_init () {
 function woa_add_hero_image() {
    if ( is_front_page() ) :
       ?>
- <div id="hero-bg">  
-	
-	<div id="hero-image">
-             <img src="http://localhost/Woocommerce/wp-content/uploads/2019/02/bg.jpeg" width="100%">
-    </div>
  
-	<div id="hero-cont"> 	 
+	<div id="hero-cont"> 
+		 
 	
 	<div id="herohead1">Making your leisure time better</div>
 	<div id="herohead2">One exciting item at a time</div>
@@ -48,7 +42,7 @@ function woa_add_hero_image() {
 	
 		
 	</div>	 
- </div> 
+  
       <?php
    endif;
 }
@@ -62,42 +56,43 @@ function custom_remove_footer_credit () {
 
 function custom_storefront_credit() {
 	?>
+	<a href="localhost/Woocommerce/contact-us/" >Contact Us </a>/	service@alluringarticles.com
 	<div class="site-info">
 		&copy; <?php echo get_bloginfo( 'name' ) . ' ' . get_the_date( 'Y' ); ?>
 	</div><!-- .site-info -->
 <?php
 }
-/** Disable All WooCommerce  Styles and Scripts Except Shop Pages*/
-add_action( 'wp_enqueue_scripts', 'dequeue_woocommerce_styles_scripts', 99 );
-function dequeue_woocommerce_styles_scripts() {
-if ( function_exists( 'is_woocommerce' ) ) {
-if ( ! is_woocommerce() && ! is_cart()) {
-# Styles
-wp_dequeue_style( 'woocommerce-general' );
-wp_dequeue_style( 'woocommerce-layout' );
-wp_dequeue_style( 'woocommerce-smallscreen' );
-wp_dequeue_style( 'woocommerce_frontend_styles' );
-wp_dequeue_style( 'woocommerce_fancybox_styles' );
-wp_dequeue_style( 'woocommerce_chosen_styles' );
-wp_dequeue_style( 'woocommerce_prettyPhoto_css' );
-# Scripts
-wp_dequeue_script( 'wc_price_slider' );
-wp_dequeue_script( 'wc-single-product' );
-wp_dequeue_script( 'wc-add-to-cart' );
-wp_dequeue_script( 'wc-cart-fragments' );
-wp_dequeue_script( 'wc-checkout' );
-wp_dequeue_script( 'wc-add-to-cart-variation' );
-wp_dequeue_script( 'wc-single-product' );
-wp_dequeue_script( 'wc-cart' );
-wp_dequeue_script( 'wc-chosen' );
-wp_dequeue_script( 'woocommerce' );
-wp_dequeue_script( 'prettyPhoto' );
-wp_dequeue_script( 'prettyPhoto-init' );
-wp_dequeue_script( 'jquery-blockui' );
-wp_dequeue_script( 'jquery-placeholder' );
-wp_dequeue_script( 'fancybox' );
-wp_dequeue_script( 'jqueryui' );
+function woocommerce_checkout_state_dropdown_fix() {
+    if ( function_exists( 'is_checkout' ) && !is_checkout() ) {
+        return;
+    }
+    $script = '<script>' . PHP_EOL;
+    $script .= "jQuery(function() {" . PHP_EOL;
+    $script .= "\tjQuery('#billing_country').trigger('change');" . PHP_EOL;
+    $script .= "\tjQuery('#billing_state_field').removeClass('woocommerce-invalid');" . PHP_EOL;
+    $script .= "});" . PHP_EOL;
+    $script .= '</script>' . PHP_EOL;
+    echo $script;
 }
-}
+add_action( 'wp_footer', 'woocommerce_checkout_state_dropdown_fix', 50 );
+
+
+add_filter('woocommerce_billing_fields','wpb_custom_billing_fields');
+// remove some fields from billing form
+// ref - https://docs.woothemes.com/document/tutorial-customising-checkout-fields-using-actions-and-filters/
+function wpb_custom_billing_fields( $fields = array() ) {
+	unset($fields['billing_company']);
+	unset($fields['billing_phone']);
+	return $fields;
 }
 
+ /* @snippet       WooCommerce Remove "What is PayPal?" @ Checkout */
+ 
+add_filter( 'woocommerce_gateway_icon', 'bbloomer_remove_what_is_paypal', 10, 2 );
+ 
+function bbloomer_remove_what_is_paypal( $icon_html, $gateway_id ) {
+if( 'paypal' == $gateway_id ) {
+   $icon_html = '<img src="http://localhost/Woocommerce/wp-content/uploads/2019/03/paypal.png" alt="PayPal Acceptance Mark">';
+}
+return $icon_html;
+}
